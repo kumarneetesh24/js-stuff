@@ -2,7 +2,22 @@ var cluster = require('cluster');
 var numWorkers = require('os').cpus().length;
 
 restartWorkers = function restartWorkers(){
+  var wid , workersId = [];
+  for (wid in cluster.workers) {
+    workersId.push(wid);
+  }
 
+  workersId.forEach(function(wid){
+    cluster.workers[wid].send({
+      text : 'shutdown',
+      from : 'master'
+    });
+    setTimeout(function(){
+      if(cluster.workers[wid]){
+        cluster.workers[wid].kill('SIGKILL');
+      }
+    },5000);
+  })
 }
 
 if(cluster.isMaster){
@@ -18,7 +33,7 @@ if(cluster.isMaster){
   }
 
   fs.readdir('.',function(err,files){
-      files.each(function(file){
+      files.forEach(function(file){
         fs.watch(file,function(){
           restartWorkers();
         });
@@ -33,4 +48,11 @@ if(cluster.isMaster){
       console.log('arguments',arguments);
     });
   });
+}else {
+  process.on('message', function(message){
+    if(message.type === 'shutdown'){
+      process.exit(0);
+    }
+  });
+  console.log('Worker' + process.pid + ' is still alive!');
 }
