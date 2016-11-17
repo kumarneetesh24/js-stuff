@@ -1,4 +1,4 @@
-import React for react;
+import React from 'react';
 
 class App extends React.Component {
   constructor() {
@@ -8,10 +8,10 @@ class App extends React.Component {
       output: "",
       error: "",
     }
+    this.update = this.update.bind(this);
   }
-  this.update = this.update.bind(this);
   update(e){
-    in = e.target.value;
+    let code = e.target.value;
     try {
         this.setState({
           output: babel-transform(code,{
@@ -26,14 +26,17 @@ class App extends React.Component {
   render(){
     return (
       <div>
-        <header> this.state.error </header>
+        <header> {this.state.error} </header>
         <div class = "container" >
           <textarea onChange={this.update}
-            defaultValue={this.state.input}
+            defaultValue={this.state.input}>
           </textarea>
-          <pre> {this.state.output}</pre>
+          <pre>
+            {this.state.output}
+          </pre>
+        </div>
       </div>
-    );
+      )
   }
 }
 

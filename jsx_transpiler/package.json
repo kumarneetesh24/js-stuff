@@ -14,5 +14,6 @@
     "jsx"
   ],
   "author": "Neetesh Kumar",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {}
 }

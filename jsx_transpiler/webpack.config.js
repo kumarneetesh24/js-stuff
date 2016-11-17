@@ -3,9 +3,9 @@ var config = {
 
    output: {
       path:'./',
-      filename: 'index.js',
+      filename: 'index.js'
    },
-	
+
    devServer: {
       inline: true,
       port: 8080
