@@ -14,7 +14,7 @@ class App extends React.Component {
     let code = e.target.value;
     try {
         this.setState({
-          output: babel-transform(code,{
+          output: babel.transform(code,{
             stage: 0,
             loose: 'all'
           }).code
