@@ -10,6 +10,19 @@ class App extends React.Component {
     }
   }
   this.update = this.update.bind(this);
+  update(e){
+    in = e.target.value;
+    try {
+        this.setState({
+          output: babel-transform(code,{
+            stage: 0,
+            loose: 'all'
+          }).code
+        })
+    } catch (error) {
+        this.setState({error: error.message})
+    }
+  }
   render(){
     return (
       <div>
