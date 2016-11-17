@@ -17,7 +17,8 @@ class App extends React.Component {
           output: babel.transform(code,{
             stage: 0,
             loose: 'all'
-          }).code
+          }).code,
+          error: ''
         })
     } catch (error) {
         this.setState({error: error.message})
@@ -27,7 +28,7 @@ class App extends React.Component {
     return (
       <div>
         <header> {this.state.error} </header>
-        <div class = "container" >
+        <div className = "container" >
           <textarea onChange={this.update}
             defaultValue={this.state.input}>
           </textarea>
