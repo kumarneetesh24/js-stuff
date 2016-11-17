@@ -1,0 +1,18 @@
+{
+  "name": "jsx_transpiler",
+  "version": "1.0.0",
+  "description": "online transpile jsx ",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --hot",
+  },
+  "repository": {
+    "type": "git",
+    "url": "jsx_tanspiler"
+  },
+  "keywords": [
+    "jsx"
+  ],
+  "author": "Neetesh Kumar",
+  "license": "ISC"
+}
